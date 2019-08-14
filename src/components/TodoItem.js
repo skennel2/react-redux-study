@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {  bindActionCreators } from 'redux'
+import { completeTodo, deleteTodo } from '../actions'
 
 class TodoItem extends React.Component {
     handleDeleteButtonClick(){
@@ -27,5 +30,14 @@ class TodoItem extends React.Component {
         );
     }
 }
+
+const mapDispatchToProps = function(dispatch) {
+    return {
+        onClickDeleteButton : bindActionCreators(deleteTodo, dispatch),
+        onClickCompleteButton : bindActionCreators(completeTodo, dispatch)
+    }
+};
+  
+TodoItem = connect(null, mapDispatchToProps)(TodoItem);
 
 export default TodoItem;

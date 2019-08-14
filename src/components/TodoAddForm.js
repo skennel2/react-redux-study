@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {  bindActionCreators } from 'redux'
+import { addTodo } from '../actions'
 
 class TodoAddForm extends React.Component {
     handleAddButtonClick(evt) {
@@ -31,5 +34,13 @@ class TodoAddForm extends React.Component {
         );
     }
 }
+
+const mapDispatchToProps = function(dispatch) {
+    return {
+        onClickAddButton : bindActionCreators(addTodo, dispatch)
+    }
+};
+  
+TodoAddForm = connect(null, mapDispatchToProps)(TodoAddForm);
 
 export default TodoAddForm;
