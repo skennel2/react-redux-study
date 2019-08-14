@@ -13,13 +13,17 @@ const initialState = {
 
 const reducer = function(state=initialState, action){
     if(action.type === 'ADD_TODO'){
-        if(action.payload.todo.trim() === 0){
+        if(action.payload.inputValue.trim() === 0){
             return {
                 ...state,
                 showNoInputAlert : true
             }
         } 
-        const newItems = state.items.concat(action.payload);
+        const newItems = state.items.concat({
+            id : state.items.length + 1,
+            todo : action.payload.inputValue,
+            isComplete : false
+        });
 
         return {
             ...state,
