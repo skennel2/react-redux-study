@@ -7,7 +7,7 @@ class App extends React.Component {
             {
                 id : 1,
                 todo : 'go shopping',
-                state : 'todo'
+                isComplete : false
             }
         ],
         showNoInputAlert : false
@@ -25,7 +25,7 @@ class App extends React.Component {
         const newItems = this.state.items.concat({
             id : this.state.items.length + 1,
             todo : evt.inputValue,
-            state : 'todo'
+            state : false
         });
 
         this.setState({
@@ -42,13 +42,25 @@ class App extends React.Component {
         });
     }
 
+    handleCompleteButtonClick(id){
+        const newItems = this.state.items.map(item => item.id === id ? {
+            ...item,
+            isComplete : true
+        } : item);
+
+        this.setState({
+            items : newItems
+        });
+    }
+
     render(){
         return (
             <div className="App">
                 <TodoContainer items={this.state.items} 
                     showNoInputAlert = {this.state.showNoInputAlert}
                     onClickAddButton={this.handleAddButtonClick.bind(this)}
-                    onClickDeleteButton={this.handleDeleteButtonClick.bind(this)}/>
+                    onClickDeleteButton={this.handleDeleteButtonClick.bind(this)}
+                    onClickCompleteButton={this.handleCompleteButtonClick.bind(this)}/>
             </div>
         );
     }   

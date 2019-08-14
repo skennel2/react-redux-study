@@ -6,8 +6,16 @@ class TodoList extends React.Component {
         this.props.onClickDeleteButton(id);
     }
 
+    handleCompleteButtonClick(id){
+        this.props.onClickCompleteButton(id);
+    }
+
     renderTodoItem(item) {
-        return (<TodoItem key={item.id} item={item} onClickDeleteButton={this.handleDeleteButtonClick.bind(this)} />);
+        return (
+            <TodoItem key={item.id} item={item} 
+                onClickDeleteButton={this.handleDeleteButtonClick.bind(this)} 
+                onClickCompleteButton={this.handleCompleteButtonClick.bind(this)}/>
+        );
     }
 
     render() {
