@@ -22,9 +22,9 @@ class TodoAddForm extends React.Component {
 
         return (
             <div>
-                <input type="text" ref={(input) => { this.textInput = input; }} />
+                <input className='form-control' type="text" ref={(input) => { this.textInput = input; }} />
 
-                <button onClick={this.handleAddButtonClick.bind(this)}>등록</button>
+                <button className='btn btn-md btn-default' onClick={this.handleAddButtonClick.bind(this)}>등록</button>
 
                 {this.props.showNoInputAlert ? plzInputDataDOM : null}
             </div>

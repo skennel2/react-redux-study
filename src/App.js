@@ -55,7 +55,7 @@ class App extends React.Component {
 
     render(){
         return (
-            <div className="App">
+            <div className="container-fluid">
                 <TodoContainer items={this.state.items} 
                     showNoInputAlert = {this.state.showNoInputAlert}
                     onClickAddButton={this.handleAddButtonClick.bind(this)}

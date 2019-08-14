@@ -17,8 +17,8 @@ class TodoContainer extends React.Component {
 
     render(){
         return(
-            <div>
-                <div>                
+            <div className='row'>
+                <div className='col-md-6'>
                     <h2>할일목록</h2>
                     <TodoList items={this.props.items.filter(item => !item.isComplete)} 
                         onClickDeleteButton={this.handleDeleteButtonClick.bind(this)} 
@@ -27,7 +27,7 @@ class TodoContainer extends React.Component {
                     <TodoAddForm onClickAddButton={this.handleAddButtonClick.bind(this)}                     
                         showNoInputAlert={this.props.showNoInputAlert} />
                 </div>
-                <div>                
+                <div className='col-md-6'>
                     <h2>완료목록</h2>
                     <TodoList items={this.props.items.filter(item => item.isComplete)} 
                         onClickDeleteButton={this.handleDeleteButtonClick.bind(this)} />

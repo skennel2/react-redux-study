@@ -20,7 +20,7 @@ class TodoList extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='list-group'>
                 {this.props.items.map(item => this.renderTodoItem(item))}
             </div>
         );
