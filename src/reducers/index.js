@@ -13,7 +13,7 @@ const initialState = {
 
 const reducer = function(state=initialState, action){
     if(action.type === 'ADD_TODO'){
-        if(action.payload.inputValue.trim() === 0){
+        if(action.payload.inputValue.trim().length === 0){
             return {
                 ...state,
                 showNoInputAlert : true
@@ -27,6 +27,7 @@ const reducer = function(state=initialState, action){
 
         return {
             ...state,
+            showNoInputAlert : false,
             items : newItems
         };
     }else if(action.type === 'DELETE_TODO'){
