@@ -1,8 +1,20 @@
 import React from 'react';
 import TodoContainer from './components/TodoContainer'
 import { connect } from 'react-redux';
+import {  bindActionCreators } from 'redux'
+import { fecthTodoList } from './actions'
 
 class App extends React.Component {
+    componentDidMount(){
+        this.props.fecthTodoList([
+            {
+                id : 1,
+                todo : 'go party',
+                isComplete : false
+            }
+        ]);
+    }
+
     render(){
         return (
             <div className="container-fluid">
@@ -20,6 +32,12 @@ const mapStateToProps = function(state){
     };
 };
 
-App = connect(mapStateToProps, null)(App);
+const mapDispatchToProps = function(dispatch) {
+    return {
+        fecthTodoList : bindActionCreators(fecthTodoList, dispatch)
+    }
+};
+
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;

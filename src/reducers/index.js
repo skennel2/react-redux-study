@@ -8,7 +8,8 @@ const initialState = {
             isComplete : false
         }
     ],
-    showNoInputAlert : false
+    showNoInputAlert : false,
+    isLoading : false
 }
 
 const reducer = function(state=initialState, action){
@@ -47,7 +48,12 @@ const reducer = function(state=initialState, action){
             ...state,
             items : newItems
         };
-    }else{
+    }else if(action.type === 'FETCH_TODO_LIST'){
+        return {
+            ...state,
+            items : action.payload
+        }
+    } else{
         return state;
     }
 }

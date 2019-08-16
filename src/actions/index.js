@@ -18,3 +18,10 @@ export function completeTodo(id){
         payload : id
     }
 }
+
+export function fecthTodoList(todoList){
+    return {
+        type : 'FETCH_TODO_LIST',
+        payload : todoList,
+    }
+}
