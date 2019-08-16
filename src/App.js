@@ -11,6 +11,11 @@ class App extends React.Component {
                 id : 1,
                 todo : 'go party',
                 isComplete : false
+            },        
+            {
+                id : 2,
+                todo : 'go chill',
+                isComplete : true
             }
         ]);
     }
