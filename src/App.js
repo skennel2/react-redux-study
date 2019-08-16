@@ -2,7 +2,7 @@ import React from 'react';
 import TodoContainer from './components/TodoContainer'
 import { connect } from 'react-redux';
 import {  bindActionCreators } from 'redux'
-import { fecthTodoList } from './actions'
+import { fecthTodoList, fetchTodoListThunk } from './actions'
 
 class App extends React.Component {
     componentDidMount(){
@@ -23,8 +23,10 @@ class App extends React.Component {
     render(){
         return (
             <div className="container-fluid">
+                  
                 <TodoContainer items={this.props.items} 
                     showNoInputAlert = {this.props.showNoInputAlert} />
+                    {this.props.isLoading ? (<div>로딩중</div>) : null} 
             </div>
         );
     }   
@@ -33,7 +35,8 @@ class App extends React.Component {
 const mapStateToProps = function(state){
     return { 
         items : state.reducer.items,
-        showNoInputAlert : state.reducer.showNoInputAlert,      
+        showNoInputAlert : state.reducer.showNoInputAlert,   
+        isLoading : state.reducer.isLoading   
     };
 };
 

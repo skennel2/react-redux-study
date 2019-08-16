@@ -25,3 +25,23 @@ export function fecthTodoList(todoList){
         payload : todoList,
     }
 }
+
+export function startLoading(){
+    return {
+        type : 'START_LOADING'
+    }
+}
+
+export function finishLoading(){
+    return {
+        type : 'FINISH_LOADING'
+    }
+}
+
+export function fetchTodoListThunk(){
+    return (dispatch)=>{
+        dispatch(startLoading());
+        dispatch(fecthTodoList());
+        dispatch(finishLoading());
+    }
+}

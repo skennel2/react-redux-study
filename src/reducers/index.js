@@ -53,7 +53,17 @@ const reducer = function(state=initialState, action){
             ...state,
             items : action.payload
         }
-    } else{
+    }else if(action.type === 'START_LOADING'){
+        return {
+            ...state,
+            isLoading : true
+        }
+    }else if(action.type === 'FINISH_LOADING'){
+        return {
+            ...state,
+            isLoading : false
+        }
+    }else{
         return state;
     }
 }
