@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 
-export default class MainStore {
+export default class Store {
     @observable
     items = [
         {
