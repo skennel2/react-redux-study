@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoContainer from './components/TodoContainer'
-import Store from './reducers/main'
+import Store from './store'
 import { observer, inject } from 'mobx-react';
 
 @inject('store')
