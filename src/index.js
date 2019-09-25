@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'mobx-react';
 import * as serviceWorker from './serviceWorker';
-import reducers from './reducers/index';
-import thunk from 'redux-thunk';
+import Store from './store';
 
-const store = createStore(reducers, applyMiddleware(thunk));
-
+const store = new Store(); // 스토어 인스턴스를 만들고
 const app = 
 (    
     <Provider store={store}> 
