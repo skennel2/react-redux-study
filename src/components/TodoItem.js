@@ -1,15 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {  bindActionCreators } from 'redux'
-import { completeTodo, deleteTodo } from '../actions'
+import { observer, inject } from 'mobx-react';
 
+@observer
+@inject('store')
 class TodoItem extends React.Component {
     handleDeleteButtonClick(){
-        this.props.onClickDeleteButton(this.props.item.id);
+        this.props.store.deleteTodo(this.props.item.id);
     }
 
     handleCompleteButtonClick(){
-        this.props.onClickCompleteButton(this.props.item.id);
+        this.props.store.completeTodo(this.props.item.id);
     }
 
     render() {
@@ -30,14 +30,5 @@ class TodoItem extends React.Component {
         );
     }
 }
-
-const mapDispatchToProps = function(dispatch) {
-    return {
-        onClickDeleteButton : bindActionCreators(deleteTodo, dispatch),
-        onClickCompleteButton : bindActionCreators(completeTodo, dispatch)
-    }
-};
-  
-TodoItem = connect(null, mapDispatchToProps)(TodoItem);
 
 export default TodoItem;

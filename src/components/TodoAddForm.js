@@ -1,17 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {  bindActionCreators } from 'redux'
-import { addTodo } from '../actions'
+import { action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
+@observer
+@inject('store')
 class TodoAddForm extends React.Component {
+    @action
     handleAddButtonClick(evt) {
         if(this.textInput.value.trim().length === 0){
             this.textInput.focus();
         }
 
-        this.props.onClickAddButton({
-            inputValue: this.textInput.value
-        });
+        this.props.store.addTodo(this.textInput.value);
 
         this.textInput.value = '';
     }
@@ -34,13 +34,5 @@ class TodoAddForm extends React.Component {
         );
     }
 }
-
-const mapDispatchToProps = function(dispatch) {
-    return {
-        onClickAddButton : bindActionCreators(addTodo, dispatch)
-    }
-};
-  
-TodoAddForm = connect(null, mapDispatchToProps)(TodoAddForm);
 
 export default TodoAddForm;
